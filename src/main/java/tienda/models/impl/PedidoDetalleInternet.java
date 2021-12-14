@@ -8,9 +8,15 @@ public class PedidoDetalleInternet implements IPedidoDetalle {
     private String idProduct;
     private Integer cantidad;
     private Double precio;
+    private String tipo;
 
-    public PedidoDetalleInternet()  {
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public PedidoDetalleInternet(String idProduct,Integer cantidad,Double precio)  {
@@ -19,6 +25,7 @@ public class PedidoDetalleInternet implements IPedidoDetalle {
         this.setIdProduct(idProduct);
         this.cantidad = cantidad;
         this.precio = precio;
+        this.setTipo("Internet");
     }
 
     @Override

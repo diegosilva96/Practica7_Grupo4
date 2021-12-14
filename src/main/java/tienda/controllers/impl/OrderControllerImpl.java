@@ -14,6 +14,7 @@ import tienda.models.interfaces.IDescuento;
 import tienda.models.interfaces.IPedidoDetalle;
 import tienda.repositories.ClienteRepositorio;
 import tienda.repositories.PedidoRepositorio;
+import tienda.models.interfaces.IDetallePedidoIterator;
 
 import io.javalin.http.Context;
 import io.javalin.http.BadRequestResponse;
@@ -47,9 +48,17 @@ public class OrderControllerImpl implements OrderController {
 
         List<IPedidoDetalle> items = new ArrayList<>();
         PedidoDetalleInternet oi1 = new PedidoDetalleInternet( "P01010034", 1, 400.90);
-        PedidoDetallePromocion oi2 = new PedidoDetallePromocion( "P01010025", 1, 600.90);
+        PedidoDetallePromocion oi2 = new PedidoDetallePromocion( "P01010025", 1, 500.90);
+        PedidoDetalleInternet oi3 = new PedidoDetalleInternet( "P01010110", 1, 80.90);
+        PedidoDetalleInternet oi4 = new PedidoDetalleInternet( "P01010400", 1, 670.10);
+        PedidoDetalleInternet oi5 = new PedidoDetalleInternet( "P01010401", 1, 100.90);
+        PedidoDetallePromocion oi6 = new PedidoDetallePromocion( "P01010114", 1, 50.40);
         items.add(oi1);
         items.add(oi2);
+        items.add(oi3);
+        items.add(oi4);
+        items.add(oi5);
+        items.add(oi6);
         order.setDetallePedido(items);
 
         order.setEstadoPedido( new PedidoCreado() );
@@ -92,6 +101,34 @@ public class OrderControllerImpl implements OrderController {
         }
 
         context.json(order);
+
+        /*Pedido order = context.bodyAsClass(Pedido.class);
+        IDetallePedidoIterator iterator = order.iterator();
+        List<IPedidoDetalle> items = new ArrayList<>();
+        PedidoDetalleInternet oi1 = new PedidoDetalleInternet( "P01010034", 1, 400.90);
+        PedidoDetallePromocion oi2 = new PedidoDetallePromocion( "P01010025", 1, 600.90);
+        PedidoDetalleInternet oi3 = new PedidoDetalleInternet( "P01010034", 1, 400.90);
+        PedidoDetallePromocion oi4 = new PedidoDetallePromocion( "P01010025", 1, 600.90);
+        PedidoDetalleInternet oi5 = new PedidoDetalleInternet( "P01010034", 1, 400.90);
+        PedidoDetallePromocion oi6 = new PedidoDetallePromocion( "P01010025", 1, 600.90);
+        items.add(oi1);
+        items.add(oi2);
+        items.add(oi3);
+        items.add(oi4);
+        items.add(oi5);
+        items.add(oi6);
+
+        order.setDetallePedido(items);
+        order.setEstadoPedido( new PedidoCreado() );
+        order.procesar();
+        /*Cliente cliObj = (Cliente)customerRepository.find("61b7dc6ec86c81fd0e74a38c");
+        System.out.println(cliObj==null?"no hay objeto":cliObj);
+        order.setClienteObj( cliObj );
+        System.out.println( cliObj.imprimeDatosCliente() );
+        while (iterator.hasNext()) {
+            IPedidoDetalle detalle = iterator.next();
+            System.out.println("Detalle: " + detalle.getIdProduct() + " - " + detalle.getCantidad() + " - " + detalle.getPrecio() );
+        }*/
 
     }
 

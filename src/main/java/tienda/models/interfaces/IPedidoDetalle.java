@@ -4,6 +4,8 @@ import tienda.models.*;
 
 public interface IPedidoDetalle {
 
+    public String getTipo();
+    
     public Double calculaPrecio();
 
     public Pedido getPedido();

@@ -8,15 +8,22 @@ public class PedidoDetallePromocion implements IPedidoDetalle {
     private String idProduct;
     private Integer cantidad;
     private Double precio;
+    private String tipo;
 
-    public PedidoDetallePromocion() {
-
-    }
     
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public PedidoDetallePromocion(String idProduct, Integer cantidad, Double precio)  {
         this.idProduct = idProduct;
         this.cantidad = cantidad;
         this.precio = precio;
+        this.setTipo("Promocion");
     }
 
     @Override
