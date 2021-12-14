@@ -15,7 +15,8 @@ public class PedidoFinalizado implements IEstadoPedido {
     public void procesar(Pedido pedido) {
 
         System.out.println("Finalizando pedido: " + pedido.getId());
-        IDetallePedidoIterator iterator = pedido.iterator();
+        IDetallePedidoIterator iterator = pedido.iteratorDescendente();
+        //IDetallePedidoIterator iterator = pedido.iterator();
         /*while (iterator.hasNext()) {
             IPedidoDetalle detalle = iterator.next();
            

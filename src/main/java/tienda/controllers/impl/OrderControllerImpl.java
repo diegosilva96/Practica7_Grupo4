@@ -65,14 +65,17 @@ public class OrderControllerImpl implements OrderController {
         
         
         order.procesar();
-     
-        /*Cliente cliObj = (Cliente)customerRepository.find("61b7dc6ec86c81fd0e74a38c");
-        System.out.println(cliObj==null?"no hay objeto":cliObj);
+        
+        Cliente cliObj = new Cliente();
+        
+        cliObj = (Cliente)customerRepository.find("61b7aabaed47f553fcd1bf7b");
+        //Cliente cliObj = (Cliente)customerRepository.find("61b7dc6ec86c81fd0e74a38c");
+        //System.out.println(cliObj==null?"no hay objeto":cliObj);
         order.setClienteObj( cliObj );
-        System.out.println( cliObj.imprimeDatosCliente() );*/
+        System.out.println( cliObj.imprimeDatosCliente() );
 
         orderRepository.create(order);
-        //String idO = order.getId().toString(); 
+        String idO = order.getId().toString(); 
         context.status(HttpStatus.CREATED_201)
                 .header(HttpHeader.LOCATION.name(), Paths.formatPostLocation(order.getId().toString()));
         if(order.getEstadoEntrega().equals("Por entregar") ){

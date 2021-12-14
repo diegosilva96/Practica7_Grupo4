@@ -22,7 +22,7 @@ public class PedidoCreado implements IEstadoPedido {
         //System.out.println("Precio Total " + order.getMontoTotal()  );
                 
         System.out.println("Pedido creado con monto: " + pedido.getMontoTotal() );
-     
+        pedido.setEstadoEntrega("");
         if(pedido.getEstadoEntrega().equals("Por entregar")){
             pedido.setEstadoPedido( new PedidoValidado() );
           // pedido.procesar();

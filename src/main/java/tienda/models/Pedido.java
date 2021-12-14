@@ -1,6 +1,7 @@
 package tienda.models;
 
 import java.util.List;
+import tienda.models.impl.DetallePedidoDescendenteIterator;
 
 import tienda.models.impl.DetallePedidoIterator;
 import tienda.models.interfaces.IDescuento;
@@ -139,5 +140,10 @@ public class Pedido implements IDetallePedidoCollection {
     public IDetallePedidoIterator iterator() {
         
         return new DetallePedidoIterator( detallePedido );
+    }
+    
+    @Override
+    public IDetallePedidoIterator iteratorDescendente() {
+        return new DetallePedidoDescendenteIterator( detallePedido );
     }
 }
